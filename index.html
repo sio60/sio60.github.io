@@ -275,17 +275,17 @@
     .detail-meta-item { font-size: 0.82rem; color: var(--text2); }
     .detail-meta-item strong { color: var(--text); font-weight: 600; }
 
-    .detail-body { padding: 2rem 0; }
-    .detail-section { margin-bottom: 2rem; }
+    .detail-body { padding: 2.5rem 0; }
+    .detail-section { margin-bottom: 2.5rem; }
     .detail-section:last-child { margin-bottom: 0; }
     .detail-section-label {
       font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #888;
-      margin-bottom: 0.85rem;
-      padding-bottom: 0.5rem;
+      color: var(--text3);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.6rem;
       border-bottom: 1px solid var(--border);
     }
 
@@ -293,41 +293,44 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0;
+      gap: 0.6rem;
     }
     .contribution-list li {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      padding: 0.65rem 0;
-      border-bottom: 1px solid var(--border);
-      line-height: 1.5;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+      align-items: baseline;
+      padding: 1rem 1.25rem;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      line-height: 1.6;
     }
-    .contribution-list li:first-child { border-top: 1px solid var(--border); }
-    .contribution-list li:last-child { border-bottom: none; }
+    .contribution-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--navy);
+      flex-shrink: 0;
+      margin-top: 0.45em;
+    }
     .contrib-tech {
-      font-size: 0.87rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: var(--text);
     }
-    .contrib-divider {
-      display: none;
-    }
+    .contrib-divider { display: none; }
     .contrib-result {
+      display: block;
       font-size: 0.83rem;
       color: var(--text2);
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--border);
+      margin-top: 0.2rem;
+      font-weight: 400;
     }
     .contribution-list li.no-split {
       font-size: 0.88rem;
       color: var(--text2);
-    }
-    .contribution-list li.no-split::before {
-      content: '→';
-      color: var(--text3);
-      flex-shrink: 0;
-      margin-top: 0.05rem;
     }
 
     .detail-links-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
@@ -802,13 +805,6 @@
       </div>
     </section>
 
-    <!-- ─── Footer ────────────────────────────────────────── -->
-    <footer>
-      <div class="container">
-        <p>© 2026 김유나. All rights reserved.</p>
-      </div>
-    </footer>
-
   </div><!-- /#main-content -->
 
   <!-- ═══ PROJECT DETAIL PAGE (SPA) ═══════════════════════════ -->
@@ -987,9 +983,9 @@
                   const idx = c.indexOf('→');
                   const tech = c.slice(0, idx).trim();
                   const result = c.slice(idx + 1).trim();
-                  return `<li><span class="contrib-tech">${tech}</span><span class="contrib-result">${result}</span></li>`;
+                  return `<li><div><span class="contrib-tech">${tech}</span><span class="contrib-result">${result}</span></div></li>`;
                 }
-                return `<li class="no-split">${c}</li>`;
+                return `<li><div>${c}</div></li>`;
               }).join('')}
             </ul>
           </div>
