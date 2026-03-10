@@ -19,19 +19,6 @@
       --nav-bg:   rgba(255,255,255,0.92);
       --navy:     #1a3260;
     }
-    [data-theme="dark"] {
-      --bg:       #0a1120;
-      --bg-alt:   #101828;
-      --bg-card:  #121e32;
-      --border:   #1e3050;
-      --text:     #e0e8f4;
-      --text2:    #7a90b0;
-      --text3:    #3a5070;
-      --tag-bg:   #152038;
-      --tag-text: #7a90b0;
-      --nav-bg:   rgba(10,17,32,0.92);
-      --navy:     #2a4a80;
-    }
 
     /* ─── Reset ──────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,14 +29,13 @@
       color: var(--text);
       line-height: 1.7;
       overflow-x: hidden;
-      transition: background 0.3s, color 0.3s;
     }
     a { color: inherit; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     /* ─── Layout ─────────────────────────────────────────── */
     .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
-    section { padding: 6rem 0; background: var(--bg); transition: background 0.3s; }
+    section { padding: 6rem 0; background: var(--bg); }
     section.alt { background: var(--bg-alt); }
 
     .section-label {
@@ -86,28 +72,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: background 0.3s, border-color 0.3s;
     }
     .nav-name { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; }
     .nav-right { display: flex; gap: 2rem; align-items: center; }
     .nav-right a { font-size: 0.78rem; color: var(--text3); letter-spacing: 0.04em; transition: color 0.2s; }
     .nav-right a:hover { color: var(--text); text-decoration: none; }
-    .theme-btn {
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--text3);
-      cursor: pointer;
-      padding: 0.3rem 0.65rem;
-      border-radius: 4px;
-      font-size: 0.72rem;
-      font-family: inherit;
-      letter-spacing: 0.06em;
-      transition: all 0.2s;
-    }
-    .theme-btn:hover { color: var(--text); border-color: var(--text3); }
 
     /* ─── Hero ───────────────────────────────────────────── */
-    #hero { padding-top: 5rem; padding-bottom: 3.75rem; border-bottom: 1px solid var(--border); }
+    #hero { padding-top: 7rem; padding-bottom: 3.75rem; border-bottom: 1px solid var(--border); }
     .hero-eyebrow { display: none; }
     .hero-name {
       font-size: clamp(2.8rem, 7vw, 5rem);
@@ -146,13 +118,12 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.5rem;
-      transition: background 0.3s, border-color 0.2s, box-shadow 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
     .skill-card:hover {
       border-color: var(--text3);
       box-shadow: 0 2px 12px rgba(0,0,0,0.05);
     }
-    [data-theme="dark"] .skill-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.25); }
     .skill-card-label {
       font-size: 0.6rem;
       font-weight: 700;
@@ -191,14 +162,11 @@
       display: flex;
       flex-direction: column;
       cursor: pointer;
-      transition: border-color 0.2s, box-shadow 0.2s, background 0.3s;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
     .project-card:hover {
       border-color: var(--text3);
       box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    }
-    [data-theme="dark"] .project-card:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
     .card-top { margin-bottom: auto; }
     .card-header {
@@ -254,7 +222,6 @@
       min-height: 100vh;
       background: var(--bg);
       padding-top: 56px;
-      transition: background 0.3s;
     }
     #project-detail-page.visible { display: block; }
 
@@ -277,7 +244,7 @@
     .detail-back-btn:hover { color: var(--text); }
 
     .detail-hero {
-      padding: 3.5rem 0 3rem;
+      padding: 2.5rem 0 2rem;
       border-bottom: 1px solid var(--border);
     }
     .detail-eyebrow {
@@ -285,8 +252,8 @@
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--text3);
-      margin-bottom: 1rem;
+      color: #888;
+      margin-bottom: 0.75rem;
     }
     .detail-title {
       font-size: clamp(2rem, 5vw, 3.2rem);
@@ -308,17 +275,17 @@
     .detail-meta-item { font-size: 0.82rem; color: var(--text2); }
     .detail-meta-item strong { color: var(--text); font-weight: 600; }
 
-    .detail-body { padding: 3rem 0; }
-    .detail-section { margin-bottom: 3rem; }
+    .detail-body { padding: 2rem 0; }
+    .detail-section { margin-bottom: 2rem; }
     .detail-section:last-child { margin-bottom: 0; }
     .detail-section-label {
       font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--text3);
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.75rem;
+      color: #888;
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.5rem;
       border-bottom: 1px solid var(--border);
     }
 
@@ -331,25 +298,25 @@
     .contribution-list li {
       display: flex;
       flex-direction: column;
-      gap: 0.3rem;
-      padding: 1rem 0;
+      gap: 0.2rem;
+      padding: 0.65rem 0;
       border-bottom: 1px solid var(--border);
-      line-height: 1.6;
+      line-height: 1.5;
     }
     .contribution-list li:first-child { border-top: 1px solid var(--border); }
     .contrib-tech {
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       font-weight: 600;
       color: var(--text);
     }
     .contrib-divider {
-      display: none; /* hidden, only used as separator */
+      display: none;
     }
     .contrib-result {
-      font-size: 0.84rem;
+      font-size: 0.83rem;
       color: var(--text2);
       padding-left: 0.75rem;
-      border-left: 2px solid var(--navy);
+      border-left: 2px solid var(--border);
     }
     .contribution-list li.no-split {
       font-size: 0.88rem;
@@ -423,13 +390,12 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.25rem 1.4rem;
-      transition: background 0.3s, border-color 0.2s, box-shadow 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
     .contact-card:hover {
       border-color: var(--text3);
       box-shadow: 0 2px 12px rgba(0,0,0,0.05);
     }
-    [data-theme="dark"] .contact-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.25); }
     .contact-label {
       font-size: 0.6rem;
       font-weight: 700;
@@ -503,7 +469,6 @@
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0.5rem 1.2rem 1rem;
-      transition: background 0.3s;
     }
     .nav-mobile-menu.open { display: block; }
     .nav-mobile-menu a {
@@ -586,7 +551,6 @@
       <a href="#education">Education</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
-      <button class="theme-btn" id="themeBtn">DARK</button>
       <button class="nav-hamburger" id="hamburgerBtn">&#9776;</button>
     </div>
   </nav>
@@ -843,7 +807,7 @@
         desc: '3D 브릭 도안 생성 및 물리 검증 엔진',
         period: '2026.01 – 02',
         team: '6인 팀',
-        role: '팀장 · AWS SQS 비동기 파이프라인 설계 · GLB↔LDR 3D 변환 엔진 구현 · React Native 앱 개발',
+        role: '팀장 · 시스템 아키텍처 설계 · 풀스택 개발',
         roleBadge: '팀장',
         cardTags: ['Next.js', 'React Native', 'Three.js', 'Spring Boot', 'FastAPI', 'AWS SQS'],
         allTags: ['Next.js', 'React Native', 'Three.js (R3F)', 'Spring Boot', 'FastAPI', 'Gemini', 'Tripo3D', 'AWS EC2/SQS/S3', 'Docker', 'MongoDB Atlas'],
@@ -862,7 +826,7 @@
         desc: '자율 추론 및 데이터 기반 AI 에이전트',
         period: '2026.02',
         team: '3인 팀',
-        role: 'LangGraph 추론 그래프 설계 · Tavily 팩트체크 파이프라인 구축',
+        role: '개발 · AI 에이전트 설계 · 백엔드 개발',
         roleBadge: '개발',
         cardTags: ['React', 'LangGraph', 'GPT-4o', 'Node.js', 'Cloudflare'],
         allTags: ['React', 'TypeScript', 'Zustand', 'Node.js', 'Prisma', 'PostgreSQL', 'LangGraph', 'GPT-4o', 'Gemini', 'Tavily', 'Cloudflare Pages', 'Railway', 'Docker'],
@@ -882,7 +846,7 @@
         desc: '화상 강의 및 회의 보조 서비스',
         period: '2025.12 – 2026.01',
         team: '6인 팀',
-        role: '팀장 · AI 실시간 감지 대시보드 구현 · Electron-Python 통합 빌드 환경 구축 · 프로세스 생명주기 동기화',
+        role: '팀장 · 시스템 아키텍처 설계 · 풀스택 개발',
         roleBadge: '팀장',
         cardTags: ['Electron', 'Mediapipe', 'OpenCV', 'WebRTC', 'FastAPI'],
         allTags: ['React', 'Electron', 'Canvas API', 'Mediapipe', 'OpenCV', 'Whisper', 'EXAONE', 'WebRTC', 'WebSockets', 'FastAPI', 'PyAutoGUI'],
@@ -901,7 +865,7 @@
         desc: 'AI 기반 맛집 리뷰 요약 및 경로 추천',
         period: '2025.11 – 12',
         team: '5인 팀',
-        role: 'Kakao Maps 지도 인터페이스 구현 · OpenAI·Gemini 리뷰 자동 요약 · 위치 기반 동선 최적화',
+        role: '개발 · 프론트엔드 · AI 기능 연동',
         roleBadge: '개발',
         cardTags: ['React', 'Spring Boot', 'FastAPI', 'OpenAI', 'Kakao Maps'],
         allTags: ['React', 'Spring Boot', 'Spring Security', 'JWT', 'FastAPI', 'OpenAI', 'Gemini', 'MySQL', 'PostgreSQL', 'Docker', 'Kakao Maps API', 'Naver Map API'],
@@ -921,7 +885,7 @@
         desc: 'AI 기반 칼로리 측정 다이어트 앱',
         period: '2025.08 – 09',
         team: '5인 팀',
-        role: '카메라→AI→DB E2E 데이터 흐름 설계 · Axios 인터셉터 UX 최적화 · 비동기 이탈 방지 흐름 설계',
+        role: '개발 · 프론트엔드 · E2E 데이터 흐름 설계',
         roleBadge: '개발',
         cardTags: ['React Native', 'Spring Boot', 'Gemini API', 'OracleDB'],
         allTags: ['React Native', 'Axios', 'Spring Boot', 'JPA', 'OracleDB', 'Gemini API', 'TTS', 'Docker'],
@@ -1073,20 +1037,6 @@
       }
     });
 
-    /* ── Theme ── */
-    const themeBtn = document.getElementById('themeBtn');
-    const html = document.documentElement;
-
-    function applyTheme(theme) {
-      html.setAttribute('data-theme', theme);
-      themeBtn.textContent = theme === 'light' ? 'DARK' : 'LIGHT';
-      localStorage.setItem('pf-theme', theme);
-    }
-
-    applyTheme(localStorage.getItem('pf-theme') || 'light');
-    themeBtn.addEventListener('click', () => {
-      applyTheme(html.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
-    });
 
     /* ── Fade-in observer ── */
     function observeFadeIn() {
