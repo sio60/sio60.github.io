@@ -816,6 +816,7 @@
       document.getElementById('main-content').style.display = 'none';
       const detailPage = document.getElementById('project-detail-page');
       detailPage.classList.add('visible');
+      history.pushState({ project: id }, '', `#project-${id}`);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -823,10 +824,39 @@
     function closeProject() {
       document.getElementById('project-detail-page').classList.remove('visible');
       document.getElementById('main-content').style.display = '';
+      history.pushState(null, '', '#projects');
       const projectsSection = document.getElementById('projects');
       if (projectsSection) {
         setTimeout(() => projectsSection.scrollIntoView({ behavior: 'smooth' }), 50);
       }
+    }
+
+    /* ── Browser back/forward ── */
+    window.addEventListener('popstate', (e) => {
+      const hash = window.location.hash;
+      if (hash.startsWith('#project-')) {
+        const id = hash.replace('#project-', '');
+        openProject(id);
+      } else {
+        // 상세 페이지가 열려있으면 닫기 (pushState 없이)
+        const detailPage = document.getElementById('project-detail-page');
+        if (detailPage.classList.contains('visible')) {
+          detailPage.classList.remove('visible');
+          document.getElementById('main-content').style.display = '';
+          const projectsSection = document.getElementById('projects');
+          if (projectsSection) {
+            setTimeout(() => projectsSection.scrollIntoView({ behavior: 'smooth' }), 50);
+          }
+        }
+      }
+    });
+
+    /* ── URL 해시로 직접 접근 시 프로젝트 열기 ── */
+    const initHash = window.location.hash;
+    if (initHash.startsWith('#project-')) {
+      const initId = initHash.replace('#project-', '');
+      // renderCards 완료 후 실행
+      setTimeout(() => openProject(initId), 0);
     }
 
     /* ── Theme ── */
