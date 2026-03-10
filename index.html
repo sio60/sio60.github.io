@@ -57,6 +57,17 @@
       text-transform: uppercase;
       color: var(--text3);
       margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--text3);
+      flex-shrink: 0;
     }
 
     /* ─── Nav ────────────────────────────────────────────── */
@@ -137,39 +148,43 @@
 
     /* ─── Skills ─────────────────────────────────────────── */
     .skills-grid {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 1rem;
     }
     .skill-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.4rem 1.5rem;
-      transition: background 0.3s, border-color 0.3s;
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: background 0.3s, border-color 0.2s, box-shadow 0.2s;
     }
+    .skill-card:hover {
+      border-color: var(--text3);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    [data-theme="dark"] .skill-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.25); }
     .skill-card-label {
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text3);
-      margin-bottom: 0.85rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
     }
-    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .tag {
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border-radius: 4px;
-      padding: 0.18rem 0.5rem;
-      font-size: 0.74rem;
-      transition: background 0.3s, color 0.3s;
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .skill-pill {
+      background: var(--bg-alt);
+      color: var(--text2);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.75rem;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-
-    /* ─── Skill Items ─────────────────────────────────────── */
-    .skill-item { margin-bottom: 0.5rem; }
-    .skill-item:last-child { margin-bottom: 0; }
-    .skill-name { font-size: 0.82rem; color: var(--text2); display: block; }
+    .skill-pill:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
 
     /* ─── Project Cards (list view) ──────────────────────── */
     .project-grid {
@@ -389,14 +404,19 @@
     .contact-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 1.25rem 1.4rem;
-      transition: background 0.3s;
+      transition: background 0.3s, border-color 0.2s, box-shadow 0.2s;
     }
+    .contact-card:hover {
+      border-color: var(--text3);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    [data-theme="dark"] .contact-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.25); }
     .contact-label {
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text3);
       margin-bottom: 0.5rem;
@@ -420,6 +440,12 @@
       transition: opacity 0.55s ease, transform 0.55s ease;
     }
     .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ─── Scrollbar ──────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text3); }
 
     /* ─── Responsive ─────────────────────────────────────── */
     @media (max-width: 640px) {
@@ -490,49 +516,61 @@
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">Languages</div>
-            <div class="skill-item"><span class="skill-name">JavaScript</span></div>
-            <div class="skill-item"><span class="skill-name">Python</span></div>
-            <div class="skill-item"><span class="skill-name">Java</span></div>
+            <div class="skill-pills">
+              <span class="skill-pill">JavaScript</span>
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">Java</span>
+            </div>
           </div>
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">Backend</div>
-            <div class="skill-item"><span class="skill-name">Spring Boot</span></div>
-            <div class="skill-item"><span class="skill-name">FastAPI</span></div>
-            <div class="skill-item"><span class="skill-name">Node.js</span></div>
-            <div class="skill-item"><span class="skill-name">JPA</span></div>
-            <div class="skill-item"><span class="skill-name">Spring Security</span></div>
-            <div class="skill-item"><span class="skill-name">JWT</span></div>
-            <div class="skill-item"><span class="skill-name">OAuth 2.0</span></div>
-            <div class="skill-item"><span class="skill-name">AWS SQS</span></div>
-            <div class="skill-item"><span class="skill-name">WebSockets</span></div>
+            <div class="skill-pills">
+              <span class="skill-pill">Spring Boot</span>
+              <span class="skill-pill">FastAPI</span>
+              <span class="skill-pill">Node.js</span>
+              <span class="skill-pill">JPA</span>
+              <span class="skill-pill">Spring Security</span>
+              <span class="skill-pill">JWT</span>
+              <span class="skill-pill">OAuth 2.0</span>
+              <span class="skill-pill">AWS SQS</span>
+              <span class="skill-pill">WebSockets</span>
+            </div>
           </div>
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">Frontend</div>
-            <div class="skill-item"><span class="skill-name">React</span></div>
-            <div class="skill-item"><span class="skill-name">Next.js</span></div>
-            <div class="skill-item"><span class="skill-name">React Native</span></div>
-            <div class="skill-item"><span class="skill-name">Tailwind CSS</span></div>
-            <div class="skill-item"><span class="skill-name">Three.js / React Three Fiber</span></div>
-            <div class="skill-item"><span class="skill-name">Electron</span></div>
+            <div class="skill-pills">
+              <span class="skill-pill">React</span>
+              <span class="skill-pill">Next.js</span>
+              <span class="skill-pill">React Native</span>
+              <span class="skill-pill">Tailwind CSS</span>
+              <span class="skill-pill">Three.js</span>
+              <span class="skill-pill">React Three Fiber</span>
+              <span class="skill-pill">Electron</span>
+            </div>
           </div>
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">AI</div>
-            <div class="skill-item"><span class="skill-name">LangGraph</span></div>
-            <div class="skill-item"><span class="skill-name">Mediapipe</span></div>
-            <div class="skill-item"><span class="skill-name">OpenCV</span></div>
+            <div class="skill-pills">
+              <span class="skill-pill">LangGraph</span>
+              <span class="skill-pill">Mediapipe</span>
+              <span class="skill-pill">OpenCV</span>
+            </div>
           </div>
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">DB &amp; Infra</div>
-            <div class="skill-item"><span class="skill-name">MySQL</span></div>
-            <div class="skill-item"><span class="skill-name">MongoDB</span></div>
-            <div class="skill-item"><span class="skill-name">Oracle</span></div>
-            <div class="skill-item"><span class="skill-name">Docker</span></div>
-            <div class="skill-item"><span class="skill-name">AWS (EC2 / S3 / SQS)</span></div>
-            <div class="skill-item"><span class="skill-name">Cloudflare</span></div>
+            <div class="skill-pills">
+              <span class="skill-pill">MySQL</span>
+              <span class="skill-pill">MongoDB</span>
+              <span class="skill-pill">Oracle</span>
+              <span class="skill-pill">Docker</span>
+              <span class="skill-pill">AWS EC2</span>
+              <span class="skill-pill">AWS S3</span>
+              <span class="skill-pill">Cloudflare</span>
+            </div>
           </div>
 
         </div>
