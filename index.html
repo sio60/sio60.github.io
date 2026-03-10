@@ -8,27 +8,29 @@
     /* ─── Variables ──────────────────────────────────────── */
     :root {
       --bg:       #ffffff;
-      --bg-alt:   #f5f5f5;
+      --bg-alt:   #f0f3f9;
       --bg-card:  #ffffff;
-      --border:   #e8e8e8;
-      --text:     #111111;
-      --text2:    #555555;
-      --text3:    #999999;
-      --tag-bg:   #f0f0f0;
-      --tag-text: #555555;
+      --border:   #d6deee;
+      --text:     #0d1b2a;
+      --text2:    #3a5070;
+      --text3:    #7a90b0;
+      --tag-bg:   #e8eef8;
+      --tag-text: #3a5070;
       --nav-bg:   rgba(255,255,255,0.92);
+      --navy:     #1a3260;
     }
     [data-theme="dark"] {
-      --bg:       #111111;
-      --bg-alt:   #181818;
-      --bg-card:  #1a1a1a;
-      --border:   #2a2a2a;
-      --text:     #f0f0f0;
-      --text2:    #999999;
-      --text3:    #555555;
-      --tag-bg:   #222222;
-      --tag-text: #999999;
-      --nav-bg:   rgba(17,17,17,0.92);
+      --bg:       #0a1120;
+      --bg-alt:   #101828;
+      --bg-card:  #121e32;
+      --border:   #1e3050;
+      --text:     #e0e8f4;
+      --text2:    #7a90b0;
+      --text3:    #3a5070;
+      --tag-bg:   #152038;
+      --tag-text: #7a90b0;
+      --nav-bg:   rgba(10,17,32,0.92);
+      --navy:     #2a4a80;
     }
 
     /* ─── Reset ──────────────────────────────────────────── */
@@ -66,7 +68,7 @@
       display: block;
       width: 24px;
       height: 1px;
-      background: var(--text3);
+      background: var(--navy);
       flex-shrink: 0;
     }
 
@@ -184,7 +186,7 @@
       font-size: 0.75rem;
       transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-    .skill-pill:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
+    .skill-pill:hover { background: var(--navy); color: #e0e8f4; border-color: var(--navy); }
 
     /* ─── Project Cards (list view) ──────────────────────── */
     .project-grid {
@@ -360,7 +362,7 @@
       font-size: 0.84rem;
       color: var(--text2);
       padding-left: 0.75rem;
-      border-left: 2px solid var(--border);
+      border-left: 2px solid var(--navy);
     }
     .contribution-list li.no-split {
       font-size: 0.88rem;
@@ -945,22 +947,6 @@
         links: [
           { label: 'GitHub', url: 'https://github.com/GAMGO/jonullist' },
         ],
-      },
-      {
-        id: 'kgrandma',
-        name: 'K-Grandma Recipe',
-        desc: '외국인 대상 식재료 인식 및 한식 레시피 제공',
-        period: '2025.11',
-        team: '3인 팀',
-        role: '팀장 · 비전 모델 식재료 인식 로직 구현 · 한식 메뉴 추론 설계 · 다국어 TTS 연동',
-        roleBadge: '팀장',
-        cardTags: ['멀티모달 LLM', '비전 모델', '다국어 TTS'],
-        allTags: ['멀티모달 LLM', '비전 모델', '다국어 TTS'],
-        contributions: [
-          '비전 모델로 식재료 이미지 자동 인식 → 맞춤형 한식 메뉴 추론 로직 구현',
-          '다국어 TTS 연동 글로벌 접근성 확보',
-        ],
-        links: [],
       },
     ];
 
