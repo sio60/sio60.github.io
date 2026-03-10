@@ -137,8 +137,8 @@
 
     /* ─── Skills ─────────────────────────────────────────── */
     .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 1rem;
     }
     .skill-card {
@@ -169,14 +169,7 @@
     /* ─── Skill Bars ─────────────────────────────────────── */
     .skill-item { margin-bottom: 0.9rem; }
     .skill-item:last-child { margin-bottom: 0; }
-    .skill-item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.4rem;
-    }
-    .skill-name { font-size: 0.82rem; color: var(--text2); }
-    .skill-pct  { font-size: 0.7rem;  color: var(--text3); font-variant-numeric: tabular-nums; }
+    .skill-name { font-size: 0.82rem; color: var(--text2); margin-bottom: 0.4rem; display: block; }
     .skill-bar {
       height: 3px;
       background: var(--border);
@@ -511,130 +504,49 @@
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">Languages</div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">JavaScript</span><span class="skill-pct">90%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:90%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">Python</span><span class="skill-pct">60%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">Java</span><span class="skill-pct">60%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div>
-            </div>
+            <div class="skill-item"><span class="skill-name">JavaScript</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:90%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Java</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div></div>
           </div>
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">Backend</div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">Spring Boot</span><span class="skill-pct">65%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">FastAPI</span><span class="skill-pct">60%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">Node.js</span><span class="skill-pct">55%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:55%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">JPA</span><span class="skill-pct">65%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">Spring Security</span><span class="skill-pct">60%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">JWT</span><span class="skill-pct">60%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">OAuth 2.0</span><span class="skill-pct">55%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:55%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">AWS SQS</span><span class="skill-pct">55%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:55%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">WebSockets</span><span class="skill-pct">55%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:55%"></div></div>
-            </div>
+            <div class="skill-item"><span class="skill-name">Spring Boot</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">FastAPI</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Node.js</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:55%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">JPA</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Spring Security</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">JWT</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">OAuth 2.0</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:55%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">AWS SQS</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:55%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">WebSockets</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:55%"></div></div></div>
           </div>
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">Frontend</div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">React</span><span class="skill-pct">85%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:85%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">Next.js</span><span class="skill-pct">80%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:80%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">React Native</span><span class="skill-pct">75%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:75%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">Tailwind CSS</span><span class="skill-pct">80%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:80%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">Three.js / React Three Fiber</span><span class="skill-pct">70%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:70%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">Electron</span><span class="skill-pct">65%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div>
-            </div>
+            <div class="skill-item"><span class="skill-name">React</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:85%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Next.js</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:80%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">React Native</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:75%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Tailwind CSS</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:80%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Three.js / React Three Fiber</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:70%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Electron</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div></div>
           </div>
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">AI</div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">LangGraph</span><span class="skill-pct">75%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:75%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">Mediapipe</span><span class="skill-pct">65%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">OpenCV</span><span class="skill-pct">65%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div>
-            </div>
+            <div class="skill-item"><span class="skill-name">LangGraph</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:75%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Mediapipe</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">OpenCV</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div></div>
           </div>
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">DB &amp; Infra</div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">MySQL</span><span class="skill-pct">75%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:75%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">MongoDB</span><span class="skill-pct">70%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:70%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">Oracle</span><span class="skill-pct">65%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">Docker</span><span class="skill-pct">75%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:75%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">AWS (EC2 / S3 / SQS)</span><span class="skill-pct">70%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:70%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-item-header"><span class="skill-name">Cloudflare</span><span class="skill-pct">65%</span></div>
-              <div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div>
-            </div>
+            <div class="skill-item"><span class="skill-name">MySQL</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:75%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">MongoDB</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:70%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Oracle</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Docker</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:75%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">AWS (EC2 / S3 / SQS)</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:70%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Cloudflare</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div></div>
           </div>
 
         </div>
