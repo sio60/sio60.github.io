@@ -469,16 +469,99 @@
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--text3); }
 
+    /* ─── Mobile Menu ────────────────────────────────────── */
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text2);
+      cursor: pointer;
+      padding: 0.3rem 0.55rem;
+      border-radius: 4px;
+      font-size: 1rem;
+      line-height: 1;
+      transition: all 0.2s;
+    }
+    .nav-hamburger:hover { color: var(--text); border-color: var(--text3); }
+
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 56px; left: 0; right: 0;
+      z-index: 199;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1.2rem 1rem;
+      transition: background 0.3s;
+    }
+    .nav-mobile-menu.open { display: block; }
+    .nav-mobile-menu a {
+      display: block;
+      padding: 0.75rem 0;
+      font-size: 0.88rem;
+      color: var(--text2);
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-mobile-menu a:hover { color: var(--text); text-decoration: none; }
+
     /* ─── Responsive ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 640px) {
+      /* Nav */
       nav { padding: 0 1.2rem; }
       .nav-right a { display: none; }
+      .nav-name-sub { display: none; }
+      .nav-hamburger { display: block; }
+
+      /* Layout */
       .container { padding: 0 1.2rem; }
-      section { padding: 4rem 0; }
-      #hero { padding-top: 6.5rem; }
-      .edu-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      section { padding: 3.5rem 0; }
+      #hero { padding-top: 6rem; padding-bottom: 4rem; }
+
+      /* Hero */
+      .hero-links { gap: 0.9rem; }
+      .hero-link { font-size: 0.75rem; }
+
+      /* Skills */
+      .skills-grid { grid-template-columns: 1fr; }
+
+      /* Project cards */
+      .project-grid { grid-template-columns: 1fr; }
+      .card-footer { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+
+      /* Detail page */
+      .detail-hero { padding: 2rem 0 1.75rem; }
+      .detail-title { font-size: 1.8rem; }
+      .detail-meta-row { flex-direction: column; gap: 0.6rem; }
+      .detail-body { padding: 2rem 0; }
+      .detail-section { margin-bottom: 2rem; }
+      .contribution-list li { font-size: 0.83rem; }
+
+      /* Achievements */
       .ach-item { grid-template-columns: 1fr; gap: 0.3rem; }
-      .ach-num { font-size: 1.2rem; }
+      .ach-num { font-size: 1.2rem; display: none; }
+
+      /* Education / Experience */
+      .edu-item { grid-template-columns: 1fr; gap: 0.2rem; }
+      .edu-period { font-size: 0.72rem; }
+
+      /* Contact */
+      .contact-grid { grid-template-columns: 1fr 1fr; }
+
+      /* Section label */
+      .section-label { margin-bottom: 2rem; }
+    }
+
+    @media (max-width: 380px) {
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -486,7 +569,7 @@
 
   <!-- ─── Nav ─────────────────────────────────────────────── -->
   <nav>
-    <span class="nav-name">KIM YUNA <span style="font-weight:400;color:var(--text3);margin:0 0.3rem">|</span> Full-Stack &amp; AI Service Developer</span>
+    <span class="nav-name">KIM YUNA <span class="nav-name-sub" style="font-weight:400;color:var(--text3);margin:0 0.3rem">|</span><span class="nav-name-sub"> Full-Stack &amp; AI Service Developer</span></span>
     <div class="nav-right">
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
@@ -495,8 +578,19 @@
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
       <button class="theme-btn" id="themeBtn">DARK</button>
+      <button class="nav-hamburger" id="hamburgerBtn">&#9776;</button>
     </div>
   </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="#skills" onclick="closeMobileMenu()">Skills</a>
+    <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+    <a href="#achievements" onclick="closeMobileMenu()">Achievements</a>
+    <a href="#education" onclick="closeMobileMenu()">Education</a>
+    <a href="#experience" onclick="closeMobileMenu()">Experience</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  </div>
 
   <!-- ═══ MAIN CONTENT ════════════════════════════════════════ -->
   <div id="main-content">
@@ -678,7 +772,7 @@
           </div>
 
           <div class="edu-item fade-in">
-            <div class="edu-period">2022 – 2024</div>
+            <div class="edu-period">2022.01 – 2024.02</div>
             <div>
               <div class="edu-name">매니저 <span style="font-weight:400;color:var(--text3);font-size:0.82rem;">· 2년</span></div>
               <div class="edu-org">송도 다이어페이커 펍</div>
@@ -965,6 +1059,24 @@
       // renderCards 완료 후 실행
       setTimeout(() => openProject(initId), 0);
     }
+
+    /* ── Hamburger ── */
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
 
     /* ── Theme ── */
     const themeBtn = document.getElementById('themeBtn');
