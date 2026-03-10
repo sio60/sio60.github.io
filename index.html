@@ -439,6 +439,26 @@
     }
     .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
+    /* ─── Hero About Button ──────────────────────────────── */
+    .hero-about-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--navy);
+      border: 1.5px solid var(--navy);
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      transition: background 0.2s, color 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .hero-about-btn:hover {
+      background: var(--navy);
+      color: #ffffff;
+      text-decoration: none;
+    }
+
     /* ─── Scrollbar ──────────────────────────────────────── */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
@@ -593,6 +613,12 @@
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             서울 영등포구
           </span>
+        </div>
+        <div class="fade-in" style="margin-top: 2rem;">
+          <a href="about.html" class="hero-about-btn">
+            유나에 대해서 궁금하신가요?
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+          </a>
         </div>
       </div>
     </section>

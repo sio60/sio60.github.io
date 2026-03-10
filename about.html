@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>유나에 대해서 | 김유나</title>
+  <style>
+    /* ─── Variables ──────────────────────────────────────── */
+    :root {
+      --bg:       #ffffff;
+      --bg-alt:   #f0f3f9;
+      --bg-card:  #ffffff;
+      --border:   #d6deee;
+      --text:     #0d1b2a;
+      --text2:    #3a5070;
+      --text3:    #7a90b0;
+      --nav-bg:   rgba(255,255,255,0.92);
+      --navy:     #1a3260;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ─── Nav ────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-name { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--text3);
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); text-decoration: none; }
+
+    /* ─── Page ───────────────────────────────────────────── */
+    .page {
+      padding-top: 56px;
+      min-height: 100vh;
+    }
+
+    /* ─── About Hero ─────────────────────────────────────── */
+    .about-hero {
+      padding: 5rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .about-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .about-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--navy);
+      flex-shrink: 0;
+    }
+    .about-title {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .about-subtitle {
+      font-size: 1rem;
+      color: var(--text2);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    /* ─── Photo + Intro ──────────────────────────────────── */
+    .about-intro {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .about-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+    .about-photo-placeholder {
+      width: 200px;
+      height: 200px;
+      border-radius: 16px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      color: var(--text3);
+      font-size: 0.75rem;
+    }
+    .about-text h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .about-text p {
+      font-size: 0.9rem;
+      color: var(--text2);
+      line-height: 1.85;
+      margin-bottom: 0.75rem;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    /* ─── Section ────────────────────────────────────────── */
+    .about-section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .about-section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--navy);
+      flex-shrink: 0;
+    }
+    .section-heading {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+    .section-body {
+      font-size: 0.88rem;
+      color: var(--text2);
+      line-height: 1.85;
+      max-width: 680px;
+    }
+
+    /* ─── Value Cards ────────────────────────────────────── */
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .value-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .value-card-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--navy);
+      letter-spacing: 0.04em;
+    }
+    .value-card-desc {
+      font-size: 0.82rem;
+      color: var(--text2);
+      line-height: 1.75;
+    }
+
+    /* ─── Interest List ──────────────────────────────────── */
+    .interest-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .interest-item {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .interest-item:first-child { border-top: 1px solid var(--border); }
+    .interest-item:last-child { border-bottom: none; }
+    .interest-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .interest-desc {
+      font-size: 0.83rem;
+      color: var(--text2);
+      line-height: 1.75;
+    }
+
+    /* ─── Goal Cards ─────────────────────────────────────── */
+    .goal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .goal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+    }
+    .goal-badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text3);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.2rem 0.5rem;
+      margin-bottom: 0.85rem;
+    }
+    .goal-title {
+      font-size: 0.97rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .goal-desc {
+      font-size: 0.82rem;
+      color: var(--text2);
+      line-height: 1.8;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+    }
+    footer p { font-size: 0.74rem; color: var(--text3); }
+
+    /* ─── Fade-in ─────────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ─── Scrollbar ──────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+    /* ─── Responsive ─────────────────────────────────────── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1.2rem; }
+      .container { padding: 0 1.2rem; }
+      .about-hero { padding: 4rem 0 2.5rem; }
+      .about-intro {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .about-photo, .about-photo-placeholder { width: 140px; height: 140px; }
+      .value-grid { grid-template-columns: 1fr; }
+      .goal-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Nav ─────────────────────────────────────────────── -->
+  <nav>
+    <span class="nav-name">KIM YUNA</span>
+    <a href="index.html" class="nav-back">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>
+      포트폴리오로 돌아가기
+    </a>
+  </nav>
+
+  <div class="page">
+    <div class="container">
+
+      <!-- ─── Hero ─────────────────────────────────────────── -->
+      <div class="about-hero">
+        <p class="about-eyebrow fade-in">ABOUT ME</p>
+        <h1 class="about-title fade-in">안녕하세요,<br>김유나입니다.</h1>
+        <p class="about-subtitle fade-in">AI를 도구로 다루되, 그 결과물을 비판적으로 검토하여<br>최상의 효율을 끌어내는 엔지니어를 목표로 합니다.</p>
+      </div>
+
+      <!-- ─── Photo + Intro ─────────────────────────────────── -->
+      <div class="about-intro fade-in">
+        <div>
+          <img src="유나.png" alt="김유나" class="about-photo"
+               onerror="this.style.display='none';document.getElementById('photo-placeholder').style.display='flex'">
+          <div class="about-photo-placeholder" id="photo-placeholder">사진</div>
+        </div>
+        <div class="about-text">
+          <h2>코드의 수호자이자 최적화 전문가</h2>
+          <p>
+            AI가 생성한 결과물에 안주하지 않고, 그 이면의 논리를 파고드는 집요한 분석가입니다.
+            '돌아가는 코드'와 '좋은 코드'의 차이를 명확히 알고, 아주 미세한 성능 저하나
+            논리적 오류도 놓치지 않는 꼼꼼함을 갖췄습니다.
+          </p>
+          <p>
+            단순한 코딩(Typing)의 시대가 가고 '리뷰와 성능'의 시대가 왔음을 인지하고 있습니다.
+            도구(AI)를 가장 잘 다루되, 그 결과물을 비판적으로 검토하여 최상의 효율을 끌어내는 것이
+            엔지니어의 핵심 가치라고 믿습니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- ─── 가치관 ────────────────────────────────────────── -->
+      <div class="about-section">
+        <p class="section-label fade-in">VALUES</p>
+        <div class="value-grid">
+          <div class="value-card fade-in">
+            <div class="value-card-title">AI는 도구, 완성도는 엔지니어가</div>
+            <div class="value-card-desc">"AI는 도구일 뿐, 기술의 완성도는 엔지니어의 통찰력에서 결정된다."</div>
+          </div>
+          <div class="value-card fade-in">
+            <div class="value-card-title">비판적 검토</div>
+            <div class="value-card-desc">AI가 생성한 코드를 그대로 수용하지 않고, 논리적 오류와 성능 병목을 직접 파고드는 습관을 유지합니다.</div>
+          </div>
+          <div class="value-card fade-in">
+            <div class="value-card-title">리뷰와 성능의 시대</div>
+            <div class="value-card-desc">누구나 코딩할 수 있는 시대에, 진정으로 성능을 높이고 문제를 해결하는 엔지니어가 되고자 합니다.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── 개발 계기 ─────────────────────────────────────── -->
+      <div class="about-section">
+        <p class="section-label fade-in">WHY ENGINEERING</p>
+        <p class="section-heading fade-in">AI와 함께하는 새로운 개발 패러다임</p>
+        <p class="section-body fade-in">
+          과거의 개발이 한 땀 한 땀 코드를 쌓아 올리는 과정이었다면,
+          AI가 생성한 방대한 로직을 조율하고 시스템화하는 과정에서 더 큰 가능성을 보았습니다.
+          "누구나 코딩할 수 있는 시대에, 진정으로 성능을 높이고 문제를 해결하는 사람은 누구인가?"라는
+          질문에 스스로 답하기 위해 AI 엔지니어의 길을 선택했습니다.
+          AI 기술을 활용해 더 복잡한 문제를 더 스마트하게 해결하고 싶다는 열망이 시작점이 되었습니다.
+        </p>
+      </div>
+
+      <!-- ─── 관심사 ────────────────────────────────────────── -->
+      <div class="about-section">
+        <p class="section-label fade-in">INTERESTS</p>
+        <div class="interest-list">
+          <div class="interest-item fade-in">
+            <div class="interest-title">코딩 공부 — Deep Dive</div>
+            <div class="interest-desc">
+              단순히 문법을 익히는 것을 넘어, 코드 리뷰 역량과 디버깅 능력을 키우는 데 집중합니다.
+              효율적인 알고리즘과 아키텍처를 공부하며 AI가 짠 코드의 성능을 개선할 수 있는
+              탄탄한 기본기를 다집니다.
+            </div>
+          </div>
+          <div class="interest-item fade-in">
+            <div class="interest-title">AI 뉴스 트래킹</div>
+            <div class="interest-desc">
+              매일 쏟아지는 최신 AI 기술 동향과 논문, 새로운 툴 소식을 놓치지 않습니다.
+              기술의 변화 속도를 즐기며, 어떤 새로운 모델이나 방법론이 시장의 판도를 바꿀지
+              분석하는 것이 일상입니다.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── 목표 ──────────────────────────────────────────── -->
+      <div class="about-section">
+        <p class="section-label fade-in">GOALS</p>
+        <div class="goal-grid">
+          <div class="goal-card fade-in">
+            <span class="goal-badge">단기</span>
+            <div class="goal-title">성능이 극대화된 AI 프로젝트</div>
+            <div class="goal-desc">
+              최신 AI 프롬프트 엔지니어링과 코드 최적화 기법을 결합하여,
+              AI가 뱉어낸 코드를 직접 리뷰하고 디버깅하여 성능을 획기적으로 개선한
+              사례를 만드는 것이 목표입니다.
+            </div>
+          </div>
+          <div class="goal-card fade-in">
+            <span class="goal-badge">장기</span>
+            <div class="goal-title">AI를 지휘하는 AI 엔지니어</div>
+            <div class="goal-desc">
+              단순히 모델을 사용하는 차원을 넘어, 복잡한 시스템의 성능 향상을 주도하고
+              AI 시대를 이끌어갈 수 있는 독보적인 기술적 인사이트를 갖춘
+              시니어 엔지니어로 성장하는 것입니다.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.container -->
+
+    <footer>
+      <div class="container">
+        <p>© 2026 김유나. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
