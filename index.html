@@ -166,24 +166,10 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    /* ─── Skill Bars ─────────────────────────────────────── */
-    .skill-item { margin-bottom: 0.9rem; }
+    /* ─── Skill Items ─────────────────────────────────────── */
+    .skill-item { margin-bottom: 0.5rem; }
     .skill-item:last-child { margin-bottom: 0; }
-    .skill-name { font-size: 0.82rem; color: var(--text2); margin-bottom: 0.4rem; display: block; }
-    .skill-bar {
-      height: 3px;
-      background: var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .skill-bar-fill {
-      height: 100%;
-      background: var(--text);
-      border-radius: 2px;
-      width: 0;
-      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .skill-bar-fill.animated { width: var(--pct); }
+    .skill-name { font-size: 0.82rem; color: var(--text2); display: block; }
 
     /* ─── Project Cards (list view) ──────────────────────── */
     .project-grid {
@@ -504,49 +490,49 @@
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">Languages</div>
-            <div class="skill-item"><span class="skill-name">JavaScript</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:90%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">Java</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">JavaScript</span></div>
+            <div class="skill-item"><span class="skill-name">Python</span></div>
+            <div class="skill-item"><span class="skill-name">Java</span></div>
           </div>
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">Backend</div>
-            <div class="skill-item"><span class="skill-name">Spring Boot</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">FastAPI</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">Node.js</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:55%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">JPA</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">Spring Security</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">JWT</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:60%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">OAuth 2.0</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:55%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">AWS SQS</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:55%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">WebSockets</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:55%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Spring Boot</span></div>
+            <div class="skill-item"><span class="skill-name">FastAPI</span></div>
+            <div class="skill-item"><span class="skill-name">Node.js</span></div>
+            <div class="skill-item"><span class="skill-name">JPA</span></div>
+            <div class="skill-item"><span class="skill-name">Spring Security</span></div>
+            <div class="skill-item"><span class="skill-name">JWT</span></div>
+            <div class="skill-item"><span class="skill-name">OAuth 2.0</span></div>
+            <div class="skill-item"><span class="skill-name">AWS SQS</span></div>
+            <div class="skill-item"><span class="skill-name">WebSockets</span></div>
           </div>
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">Frontend</div>
-            <div class="skill-item"><span class="skill-name">React</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:85%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">Next.js</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:80%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">React Native</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:75%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">Tailwind CSS</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:80%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">Three.js / React Three Fiber</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:70%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">Electron</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">React</span></div>
+            <div class="skill-item"><span class="skill-name">Next.js</span></div>
+            <div class="skill-item"><span class="skill-name">React Native</span></div>
+            <div class="skill-item"><span class="skill-name">Tailwind CSS</span></div>
+            <div class="skill-item"><span class="skill-name">Three.js / React Three Fiber</span></div>
+            <div class="skill-item"><span class="skill-name">Electron</span></div>
           </div>
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">AI</div>
-            <div class="skill-item"><span class="skill-name">LangGraph</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:75%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">Mediapipe</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">OpenCV</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">LangGraph</span></div>
+            <div class="skill-item"><span class="skill-name">Mediapipe</span></div>
+            <div class="skill-item"><span class="skill-name">OpenCV</span></div>
           </div>
 
           <div class="skill-card fade-in">
             <div class="skill-card-label">DB &amp; Infra</div>
-            <div class="skill-item"><span class="skill-name">MySQL</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:75%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">MongoDB</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:70%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">Oracle</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">Docker</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:75%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">AWS (EC2 / S3 / SQS)</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:70%"></div></div></div>
-            <div class="skill-item"><span class="skill-name">Cloudflare</span><div class="skill-bar"><div class="skill-bar-fill" style="--pct:65%"></div></div></div>
+            <div class="skill-item"><span class="skill-name">MySQL</span></div>
+            <div class="skill-item"><span class="skill-name">MongoDB</span></div>
+            <div class="skill-item"><span class="skill-name">Oracle</span></div>
+            <div class="skill-item"><span class="skill-name">Docker</span></div>
+            <div class="skill-item"><span class="skill-name">AWS (EC2 / S3 / SQS)</span></div>
+            <div class="skill-item"><span class="skill-name">Cloudflare</span></div>
           </div>
 
         </div>
@@ -915,25 +901,9 @@
       document.querySelectorAll('.fade-in:not(.visible)').forEach(el => obs.observe(el));
     }
 
-    /* ── Skill bar animation ── */
-    function observeSkillBars() {
-      const barObs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-              bar.classList.add('animated');
-            });
-            barObs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.2 });
-      document.querySelectorAll('.skill-card').forEach(card => barObs.observe(card));
-    }
-
     /* ── Init ── */
     renderCards();
     observeFadeIn();
-    observeSkillBars();
   </script>
 </body>
 </html>
