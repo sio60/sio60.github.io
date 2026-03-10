@@ -232,7 +232,15 @@
       flex-shrink: 0;
     }
     .card-desc { font-size: 0.84rem; color: var(--text2); margin-bottom: 1rem; }
-    .card-tags { margin-bottom: 1.25rem; }
+    .card-tags { margin-bottom: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .card-tags .tag {
+      background: var(--bg-alt);
+      color: var(--text2);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.28rem 0.7rem;
+      font-size: 0.78rem;
+    }
     .card-footer {
       display: flex;
       justify-content: space-between;
