@@ -269,6 +269,45 @@
       line-height: 1.8;
     }
 
+    /* ─── Recommendation ────────────────────────────────── */
+    .rec-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 680px;
+    }
+    .rec-quote {
+      font-size: 0.88rem;
+      color: var(--text2);
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+    .rec-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .rec-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .rec-skill-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      background: var(--bg-card);
+    }
+    .rec-author {
+      font-size: 0.78rem;
+      color: var(--text3);
+      font-weight: 500;
+    }
+
     /* ─── Footer ─────────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
@@ -324,7 +363,7 @@
       <div class="about-hero">
         <p class="about-eyebrow fade-in">ABOUT ME</p>
         <h1 class="about-title fade-in">안녕하세요,<br>김유나입니다.</h1>
-        <p class="about-subtitle fade-in">AI와 함께 빠르게 만들고, 만들어진 코드를 직접 리뷰하고<br>다듬는 것을 즐기는 개발자입니다.</p>
+        <p class="about-subtitle fade-in">도구가 무엇이든 결과물의 품질에 책임지는<br>개발자가 되고 싶습니다.</p>
       </div>
 
       <!-- ─── Photo + Intro ─────────────────────────────────── -->
@@ -335,11 +374,11 @@
           <div class="about-photo-placeholder" id="photo-placeholder">사진</div>
         </div>
         <div class="about-text">
-          <h2>항상 새로운 기술을 배우며 모험하는 것을 즐기고,<br>협업을 위해 배려하며 성장하기 위해 노력합니다.</h2>
+          <h2>새로운 기술을 빠르게 받아들이되,<br>이해하지 못한 채 쓰지 않으려고 합니다.</h2>
           <p>
-            AI가 만든 코드를 리뷰하고 디버깅하고 성능을 끌어올리는 방향으로 공부하고 있습니다.
-            많은 개발자들이 AI에 다 맡기면서 기본기나 코드 흐름을 놓치는 경우가 늘고 있어서,
-            저는 그 부분도 놓치지 않으려고 꾸준히 이어가는 중입니다.
+            AI 도구를 활용하는 환경에서도 코드의 흐름을 직접 따라가고 결과물을 검토하는 습관을 유지하고 있습니다.
+            생성된 코드를 그대로 믿기보다는 오류 가능성을 먼저 확인하고,
+            구조적으로 더 나은 방향이 있는지 살펴보는 것을 개발 루틴으로 삼고 있습니다.
           </p>
         </div>
       </div>
@@ -349,16 +388,16 @@
         <p class="section-label fade-in">VALUES</p>
         <div class="value-grid">
           <div class="value-card fade-in">
-            <div class="value-card-title">바이브코딩, 그 이상</div>
-            <div class="value-card-desc">AI와 함께 빠르게 만들고, 그 결과물을 직접 검증하고 다듬는 과정을 중요하게 여기며 작업합니다.</div>
+            <div class="value-card-title">검토와 완성도</div>
+            <div class="value-card-desc">빠르게 만드는 것보다, 만들어진 코드가 왜 그렇게 동작하는지 이해하는 쪽에 더 신경을 씁니다.</div>
           </div>
           <div class="value-card fade-in">
-            <div class="value-card-title">코드 리뷰와 디버깅</div>
-            <div class="value-card-desc">AI가 만든 코드를 그대로 쓰지 않습니다. 논리 흐름을 따라가며 오류를 잡고 더 나은 구조로 개선하는 것을 습관처럼 합니다.</div>
+            <div class="value-card-title">코드 흐름 이해</div>
+            <div class="value-card-desc">오류가 생겼을 때 로그만 읽는 게 아니라 실제 로직을 따라가며 원인을 파악하는 과정을 중요하게 여깁니다.</div>
           </div>
           <div class="value-card fade-in">
-            <div class="value-card-title">성능이 곧 실력</div>
-            <div class="value-card-desc">코드를 생성하는 것보다, 그 코드의 성능을 실제로 높이는 쪽으로 역량을 키우고 있습니다.</div>
+            <div class="value-card-title">꾸준한 기본기</div>
+            <div class="value-card-desc">도구가 달라져도 기반이 되는 개념은 변하지 않습니다. 유행보다 원리 쪽에 더 시간을 씁니다.</div>
           </div>
         </div>
       </div>
@@ -366,13 +405,12 @@
       <!-- ─── 개발 계기 ─────────────────────────────────────── -->
       <div class="about-section">
         <p class="section-label fade-in">WHY ENGINEERING</p>
-        <p class="section-heading fade-in">손코딩의 시대에서 리뷰와 성능의 시대로</p>
+        <p class="section-heading fade-in">이해하면서 만들고 싶었습니다</p>
         <p class="section-body fade-in">
-          예전에는 코드를 얼마나 잘 타이핑하느냐가 중요했다면, 지금은 AI가 만들어낸 코드를
-          얼마나 잘 이해하고 다듬을 수 있느냐가 핵심이 됐습니다.
-          저는 그 변화를 자연스럽게 받아들이고, AI와 함께 개발하는 것을 즐깁니다.
-          AI가 놓치는 성능 문제나 논리 오류, 비효율적인 구조를 직접 짚어내는 방향으로
-          꾸준히 성장하는 중입니다.
+          처음 개발을 시작할 때부터 동작하는 것과 잘 동작하는 것의 차이가 신경 쓰였습니다.
+          AI 도구를 접한 뒤에도 그 생각은 크게 달라지지 않았습니다.
+          빠르게 결과물을 낼 수 있게 됐지만, 그 결과물이 정말 괜찮은 코드인지 판단할 수 있어야 한다는 생각으로
+          코드 리뷰와 디버깅, 구조 개선 쪽으로 공부를 이어가고 있습니다.
         </p>
       </div>
 
@@ -381,18 +419,17 @@
         <p class="section-label fade-in">INTERESTS</p>
         <div class="interest-list">
           <div class="interest-item fade-in">
-            <div class="interest-title">코딩 공부</div>
+            <div class="interest-title">코드 읽기와 디버깅</div>
             <div class="interest-desc">
-              문법이나 기본기는 당연히 챙기면서, 거기서 더 나아가 코드를 읽고 문제를 찾는 훈련도 꾸준히 하고 있습니다.
-              AI가 짠 코드에서 비효율한 부분을 직접 찾아서 고쳐보는 게 재미있어서 자연스럽게 그쪽으로 공부가 이어지는 중입니다.
+              문법이나 기본기는 기본으로 챙기면서, 남이 짠 코드를 읽고 문제를 찾는 훈련을 꾸준히 합니다.
+              오류를 고치는 과정에서 가장 많이 배운다고 느껴서 자연스럽게 그쪽 공부 비중이 높아졌습니다.
             </div>
           </div>
           <div class="interest-item fade-in">
-            <div class="interest-title">AI 뉴스 트래킹</div>
+            <div class="interest-title">AI 기술 동향 팔로우</div>
             <div class="interest-desc">
-              매일 쏟아지는 최신 AI 기술 동향과 새로운 툴 소식을 놓치지 않습니다.
-              기술의 변화 속도를 즐기며 어떤 모델이나 방법론이 개발 방식 자체를 바꿀지
-              지켜보는 게 일상입니다.
+              새로운 모델이나 개발 도구가 나오면 실제로 써보거나 구조를 찾아보는 편입니다.
+              기술 변화에 무감각하지 않으려고 꾸준히 관심을 유지하고 있습니다.
             </div>
           </div>
         </div>
@@ -404,19 +441,41 @@
         <div class="goal-grid">
           <div class="goal-card fade-in">
             <span class="goal-badge">단기</span>
-            <div class="goal-title">코드 리뷰와 성능 개선 사례 만들기</div>
+            <div class="goal-title">실무에서 쓸 수 있는 코드 만들기</div>
             <div class="goal-desc">
-              바이브코딩으로 빠르게 만든 프로젝트에서 직접 코드 리뷰와 디버깅을 거쳐
-              성능을 눈에 띄게 개선한 사례를 만드는 것이 목표입니다.
+              프로젝트를 마무리하는 데서 그치지 않고, 직접 리뷰하고 수정해서
+              더 나은 결과물로 다듬는 경험을 쌓는 것이 지금의 목표입니다.
             </div>
           </div>
           <div class="goal-card fade-in">
             <span class="goal-badge">장기</span>
-            <div class="goal-title">AI 시대의 엔지니어링 리더</div>
+            <div class="goal-title">구조를 설계할 수 있는 개발자</div>
             <div class="goal-desc">
-              AI를 잘 쓰는 것을 넘어, 복잡한 시스템의 성능 향상을 실질적으로 이끌 수 있는
-              기술적 인사이트를 갖춘 엔지니어로 성장하는 것입니다.
+              기능을 구현하는 수준을 넘어, 시스템 전체의 흐름을 이해하고
+              더 나은 구조를 제안할 수 있는 개발자로 성장하고 싶습니다.
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── 추천사 ──────────────────────────────────────────── -->
+      <div class="about-section">
+        <p class="section-label fade-in">RECOMMENDATION</p>
+        <div class="rec-card fade-in">
+          <div class="rec-quote">
+            저는 유나님을 멘토–멘티 관계로 만나 프로젝트를 함께 진행한 경험이 있습니다.
+            프로젝트 과정에서 맡은 역할을 책임감 있게 수행했으며, 주어진 과제를 끝까지 마무리하려는 태도가 인상적이었습니다.
+            특히 문제 상황이 발생했을 때 단순히 도움을 요청하는 데 그치지 않고, 먼저 스스로 해결 방안을 고민한 뒤 의견을 제시하는 모습이 좋았습니다.
+            피드백을 받아들이는 자세도 열린 편이며, 부족한 부분에 대해서는 인정하고 보완하려는 노력이 꾸준히 이어지고 있습니다.
+            기본적인 책임감과 태도가 잘 갖추어져 있어 앞으로 경험이 쌓일수록 더 단단해질 사람이라 믿고 있습니다.
+          </div>
+          <div class="rec-meta">
+            <div class="rec-skills">
+              <span class="rec-skill-badge">문제해결 능력</span>
+              <span class="rec-skill-badge">리더십</span>
+              <span class="rec-skill-badge">성실함</span>
+            </div>
+            <div class="rec-author">멘토링 프로젝트 · 원티드랩 출신 멘토</div>
           </div>
         </div>
       </div>
