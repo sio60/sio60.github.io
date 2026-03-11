@@ -74,6 +74,7 @@
       align-items: center;
     }
     .nav-name { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; }
+    .nav-name-sub { font-size: 0.78rem; }
     .nav-right { display: flex; gap: 2rem; align-items: center; }
     .nav-right a { font-size: 0.78rem; color: var(--text3); letter-spacing: 0.04em; transition: color 0.2s; }
     .nav-right a:hover { color: var(--text); text-decoration: none; }
@@ -242,6 +243,19 @@
       font-family: inherit;
     }
     .detail-back-btn:hover { color: var(--text); }
+    .nav-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--text3);
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      transition: color 0.2s;
+    }
+    .nav-back-btn:hover { color: var(--text); }
 
     .detail-hero {
       padding: 2.5rem 0 2rem;
@@ -346,6 +360,13 @@
       transition: all 0.2s;
     }
     .detail-ext-link:hover { color: var(--text); border-color: var(--text3); text-decoration: none; }
+    .arch-img {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-alt);
+    }
 
     /* ─── Achievements ───────────────────────────────────── */
     .ach-list { display: flex; flex-direction: column; gap: 0; }
@@ -568,7 +589,7 @@
   <!-- ─── Nav ─────────────────────────────────────────────── -->
   <nav>
     <span class="nav-name">KIM YUNA <span class="nav-name-sub" style="font-weight:400;color:var(--text3);margin:0 0.3rem">|</span><span class="nav-name-sub"> Full-Stack &amp; AI Service Developer</span></span>
-    <div class="nav-right">
+    <div class="nav-right" id="navRight">
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#achievements">Achievements</a>
@@ -576,6 +597,10 @@
       <a href="#experience">Experience</a>
       <button class="nav-hamburger" id="hamburgerBtn">&#9776;</button>
     </div>
+    <button class="nav-back-btn" id="navBackBtn" onclick="closeProject()" style="display:none;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>
+      프로젝트 목록으로
+    </button>
   </nav>
 
   <!-- Mobile Menu -->
@@ -790,12 +815,6 @@
   <!-- ═══ PROJECT DETAIL PAGE (SPA) ═══════════════════════════ -->
   <div id="project-detail-page">
     <div class="container">
-      <div class="detail-back-bar">
-        <button class="detail-back-btn" onclick="closeProject()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5m7-7-7 7 7 7"/></svg>
-          프로젝트 목록으로
-        </button>
-      </div>
       <div id="detail-content"></div>
     </div>
   </div>
@@ -806,6 +825,7 @@
     const PROJECTS = [
       {
         id: 'brickers',
+        arch: 'arch-brickers.png',
         name: 'BRICKERS',
         desc: '3D 브릭 도안 생성 및 물리 검증 엔진',
         period: '2026.01 – 02',
@@ -825,6 +845,7 @@
       },
       {
         id: 'grogi',
+        arch: 'arch-grogi.png',
         name: 'GROGI AI',
         desc: '자율 추론 및 데이터 기반 AI 에이전트',
         period: '2026.02',
@@ -845,6 +866,7 @@
       },
       {
         id: 'nolook',
+        arch: 'arch-nolook.png',
         name: 'NO-LOOK',
         desc: '화상 강의 및 회의 보조 서비스',
         period: '2025.12 – 2026.01',
@@ -864,6 +886,7 @@
       },
       {
         id: 'dishinside',
+        arch: 'arch-dish.png',
         name: 'Dish Inside',
         desc: 'AI 기반 맛집 리뷰 요약 및 경로 추천',
         period: '2025.11 – 12',
@@ -884,6 +907,7 @@
       },
       {
         id: 'babelmon',
+        arch: 'arch-babelmon.png',
         name: 'Babelmon',
         desc: 'AI 기반 칼로리 측정 다이어트 앱',
         period: '2025.08 – 09',
@@ -969,6 +993,10 @@
               }).join('')}
             </ul>
           </div>
+          ${p.arch ? `<div class="detail-section">
+            <p class="detail-section-label">아키텍처</p>
+            <img src="${p.arch}" alt="${p.name} 아키텍처" class="arch-img">
+          </div>` : ''}
           ${linksHtml ? `<div class="detail-section">
             <p class="detail-section-label">Links</p>
             <div class="detail-links-row">${linksHtml}</div>
@@ -977,6 +1005,8 @@
       `;
 
       document.getElementById('main-content').style.display = 'none';
+      document.getElementById('navRight').style.display = 'none';
+      document.getElementById('navBackBtn').style.display = 'inline-flex';
       const detailPage = document.getElementById('project-detail-page');
       detailPage.classList.add('visible');
       history.pushState({ project: id }, '', `#project-${id}`);
@@ -987,6 +1017,8 @@
     function closeProject() {
       document.getElementById('project-detail-page').classList.remove('visible');
       document.getElementById('main-content').style.display = '';
+      document.getElementById('navRight').style.display = '';
+      document.getElementById('navBackBtn').style.display = 'none';
       history.pushState(null, '', '#projects');
       const projectsSection = document.getElementById('projects');
       if (projectsSection) {
