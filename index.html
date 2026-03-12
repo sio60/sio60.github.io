@@ -940,6 +940,20 @@
           '앱 종료 시 Python 프로세스 강제 종료 생명주기 동기화 로직 구현',
         ],
         troubleshooting: [],
+        retrospective: [
+          {
+            title: 'MediaPipe 서버 사이드 처리로 인한 지연',
+            content: 'MediaPipe 기반 얼굴·자세 인식을 Python 백엔드에서 처리하다 보니 실시간 감지 특성상 서버 부하가 높아지고 응답 지연이 발생했습니다. 클라이언트(브라우저/Electron)에서 직접 MediaPipe를 구동하는 방식으로 구조를 변경한다면 서버 의존도를 줄이고 체감 반응 속도를 크게 개선할 수 있을 것이라 판단합니다.',
+          },
+          {
+            title: 'STT(Whisper) 잡음·침묵 구간 할루시네이션',
+            content: '잡음이 있거나 말이 없는 침묵 구간에서 Whisper가 존재하지 않는 텍스트를 생성하는 할루시네이션 문제가 발생했습니다. VAD(Voice Activity Detection) 도입이나 신뢰도 임계값 기반 필터링, 침묵 구간 예외 처리 로직 강화로 오탐을 줄이는 개선이 필요합니다.',
+          },
+          {
+            title: 'EXAONE 1.2B 모델 문맥 이해도 한계',
+            content: '경량 모델(1.2B)을 사용한 덕분에 로컬 구동과 빠른 응답이 가능했지만, 긴 대화 맥락이나 복잡한 질의에서 문맥 이해도가 떨어지는 경우가 있었습니다. 시스템 프롬프트 고도화나 상위 사이즈 모델로의 교체를 통해 응답 정확도를 높이는 방향을 검토할 필요가 있습니다.',
+          },
+        ],
         links: [
           { label: 'GitHub', url: 'https://github.com/sio60/no-look' },
         ],
@@ -1033,6 +1047,20 @@
         ? p.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener" class="detail-ext-link">${l.label} ↗</a>`).join('')
         : '';
 
+      const retrospectiveHtml = p.retrospective && p.retrospective.length
+        ? `<div class="detail-section">
+            <p class="detail-section-label">Retrospective</p>
+            <div class="ts-list">
+              ${p.retrospective.map(r => `
+                <div class="ts-item">
+                  <p class="ts-problem-title">${r.title}</p>
+                  <p class="ts-detail">${r.content}</p>
+                </div>
+              `).join('')}
+            </div>
+          </div>`
+        : '';
+
       const troubleshootingHtml = p.troubleshooting && p.troubleshooting.length
         ? `<div class="detail-section">
             <p class="detail-section-label">Troubleshooting</p>
@@ -1083,6 +1111,7 @@
             </ul>
           </div>
           ${troubleshootingHtml}
+          ${retrospectiveHtml}
           ${p.arch ? `<div class="detail-section">
             <p class="detail-section-label">Architecture</p>
             <img src="${p.arch}" alt="${p.name} 아키텍처" class="arch-img">
