@@ -189,7 +189,7 @@
       margin-left: 0.75rem;
       flex-shrink: 0;
     }
-    .card-desc { display: none; }
+    .card-desc { font-size: 0.83rem; color: var(--text2); margin-bottom: 0.85rem; line-height: 1.55; }
     .card-tags { margin-bottom: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .card-tags .tag {
       background: var(--bg-alt);
@@ -448,6 +448,68 @@
       transition: opacity 0.55s ease, transform 0.55s ease;
     }
     .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ─── Detail Goal ───────────────────────────────────── */
+    .detail-goal {
+      font-size: 0.92rem;
+      color: var(--text2);
+      line-height: 1.8;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.4rem;
+    }
+
+    /* ─── Troubleshooting ────────────────────────────────── */
+    .ts-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .ts-item {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .ts-problem {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .ts-problem-title { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .ts-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      flex-shrink: 0;
+      background: #fde8e8;
+      color: #a33;
+      border: 1px solid #f5c0c0;
+    }
+    .ts-badge-solution {
+      background: #e8f4e8;
+      color: #2a6b2a;
+      border-color: #b8ddb8;
+    }
+    .ts-detail {
+      font-size: 0.83rem;
+      color: var(--text2);
+      line-height: 1.7;
+      padding-left: 0.2rem;
+    }
+    .ts-solution {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.6;
+    }
+    .ts-solution .ts-badge { margin-top: 0.1rem; }
 
     /* ─── Detail Tags ────────────────────────────────────── */
     .detail-tag {
@@ -832,6 +894,7 @@
         arch: 'arch-brickers.png',
         name: 'BRICKERS',
         desc: '3D 브릭 도안 생성 및 물리 검증 엔진',
+        goal: '사용자의 이미지를 조립 가능한 브릭 설계로 변환하는 제작 플랫폼입니다. 레고 브릭 창작은 전문 지식 없이는 진입 장벽이 높고, 직접 조립 가능 여부를 사전에 검증하기도 어렵습니다. BRICKERS는 접근성·최적화·반복 개선형 AI를 핵심 가치로, 누구나 아이디어를 이미지로 입력해 완성된 브릭 도안을 얻고 실제로 조립까지 이어갈 수 있는 경험을 제공하는 것을 목표로 합니다.',
         period: '2026.01 – 02',
         team: '6인 팀',
         role: '팀장 · 시스템 아키텍처 설계 · 풀스택 개발',
@@ -843,6 +906,13 @@
           'GLB↔LDR 좌표 변환 공식 수립 및 행렬 연산 로직 직접 구현 → BrickLink Studio 100% 호환',
           'React Native 크로스 플랫폼 앱 개발',
         ],
+        troubleshooting: [
+          {
+            problem: '논문 기반 좌표 변환 알고리즘 호환성 문제',
+            detail: '3D 모델(GLB)을 레고 도안 포맷(LDR)으로 변환할 때 기존 논문의 수식을 그대로 적용하면 BrickLink Studio의 좌표계와 맞지 않아 도안이 비정상적으로 배치되는 문제가 발생했습니다.',
+            solution: '논문 수식에 의존하지 않고 GLB↔LDR 간 좌표 변환 공식을 직접 수립하고 행렬 연산 로직을 새로 구현해 BrickLink Studio 100% 호환을 달성했습니다.',
+          },
+        ],
         links: [
           { label: 'GitHub', url: 'https://github.com/sio60/brickers' },
         ],
@@ -852,6 +922,7 @@
         arch: 'arch-grogi.png',
         name: 'GROGI AI',
         desc: '자율 추론 및 데이터 기반 AI 에이전트',
+        goal: '고민을 입력하면 감정적 공감 대신 객관적 데이터 기반의 판단을 하고, 구체적인 액션 플랜을 제시하는 AI 에이전트 서비스입니다. 막연한 고민이나 의사결정 상황에서 사람들이 주관적 감정에 휘둘리지 않고 근거 있는 선택을 내릴 수 있도록, 실시간 팩트체크와 문서 분석을 결합한 다단계 추론 파이프라인을 통해 신뢰할 수 있는 판단 근거와 실행 가능한 플랜을 제공하는 것을 목표로 합니다.',
         period: '2026.02',
         team: '3인 팀',
         role: '개발 · AI 에이전트 설계 · 백엔드 개발',
@@ -863,6 +934,13 @@
           'Tavily API 연동 실시간 팩트체크 파이프라인',
           'PyMuPDF + 비전 모델 멀티모달 분석 구현',
         ],
+        troubleshooting: [
+          {
+            problem: 'AI 할루시네이션',
+            detail: 'LangGraph 추론 과정에서 AI가 실제 근거 없이 그럴듯한 정보를 생성하는 할루시네이션 문제가 발생했습니다. 특히 팩트 기반의 판단을 내려야 하는 서비스 특성상 신뢰도 저하가 치명적이었습니다.',
+            solution: '시스템 프롬프트와 체인 내 각 노드의 프롬프트를 고도화하고, Tavily API를 연동한 실시간 팩트체크 파이프라인을 추가해 AI 응답이 실제 데이터에 기반하도록 설계했습니다.',
+          },
+        ],
         links: [
           { label: 'Live Site', url: 'https://grogi.store' },
           { label: 'GitHub', url: 'https://github.com/sbpak1/Grogi-Ai' },
@@ -873,6 +951,7 @@
         arch: 'arch-nolook.png',
         name: 'NO-LOOK',
         desc: '화상 강의 및 회의 보조 서비스',
+        goal: '실시간 AI 상태 감지로 사용자가 회의나 강의 흐름을 놓치지 않도록 보조하고 자동화 기능을 제공하는 서비스입니다. 비대면 환경이 일상화되면서 장시간 화상 회의·강의 중 집중력 저하와 내용 누락이 문제가 되고 있습니다. NO-LOOK은 사용자 상태를 AI가 감지해 이탈·졸음 등을 포착하고, 자동 자막·요약·알림 기능으로 참여자가 흐름을 끊김 없이 따라갈 수 있는 환경을 만드는 것을 목표로 합니다.',
         period: '2025.12 – 2026.01',
         team: '6인 팀',
         role: '팀장 · 시스템 아키텍처 설계 · 풀스택 개발',
@@ -884,6 +963,13 @@
           'Python 백엔드 .exe 빌드 + Electron 통합 원클릭 실행 환경 구축',
           '앱 종료 시 Python 프로세스 강제 종료 생명주기 동기화 로직 구현',
         ],
+        troubleshooting: [
+          {
+            problem: 'Electron 내 화면 전환 시 캡처 대상 인식 불가',
+            detail: 'Electron 앱 내에서 다른 창으로 포커스가 이동하거나 화면이 전환될 때, 화면 캡처 모듈이 대상 창을 제대로 인식하지 못하거나 캡처 스트림이 끊기는 문제가 발생했습니다.',
+            solution: 'OBS(Open Broadcaster Software)를 활용해 화면 캡처 레이어를 별도로 분리하고, 창 전환과 무관하게 안정적으로 화면을 캡처할 수 있는 구조로 전환해 문제를 해결했습니다.',
+          },
+        ],
         links: [
           { label: 'GitHub', url: 'https://github.com/sio60/no-look' },
         ],
@@ -893,6 +979,7 @@
         arch: 'arch-dish.png',
         name: 'Dish Inside',
         desc: 'AI 기반 맛집 리뷰 요약 및 경로 추천',
+        goal: '방대한 맛집 리뷰를 AI로 핵심만 요약하고, 이동 경로에 맞춘 스마트한 맛집 추천을 제공하는 서비스입니다. 수백 개의 리뷰를 일일이 읽어야 하는 불편함과, 위치·동선을 고려하지 않은 추천으로 비효율적인 이동이 발생하는 문제를 해결하고자 했습니다. AI 리뷰 요약과 지도 기반 경로 최적화를 결합해 사용자가 빠르고 효율적으로 식사 계획을 세울 수 있도록 돕는 것을 목표로 합니다.',
         period: '2025.11 – 12',
         team: '5인 팀',
         role: '개발 · 프론트엔드 · AI 기능 연동',
@@ -905,6 +992,7 @@
           'OpenAI·Gemini 연동 대규모 리뷰 자동 요약 설계',
           '위치 기반 거리·시간·동선 최적화',
         ],
+        troubleshooting: [],
         links: [
           { label: 'GitHub', url: 'https://github.com/GAMGO/finalProject' },
         ],
@@ -914,16 +1002,24 @@
         arch: 'arch-babelmon.png',
         name: 'Babelmon',
         desc: 'AI 기반 칼로리 측정 다이어트 앱',
+        goal: 'MoE 기반 멀티에이전트 파이프라인으로 Tesseract OCR과 Gemini 비전 분석, 한국식품진흥원 영양 API 비교를 결합해 직접 입력 없이 식단을 자동 기록하는 다이어트 앱입니다. 식단 관리의 가장 큰 진입 장벽인 "매번 음식을 직접 검색하고 입력해야 하는 번거로움"을 해소하고자 했습니다. 카메라로 찍기만 하면 AI가 음식을 인식해 칼로리와 영양정보를 자동으로 기록하고, 누적 통계까지 제공하는 것을 목표로 합니다.',
         period: '2025.08 – 09',
         team: '5인 팀',
         role: '개발 · 프론트엔드 · E2E 데이터 흐름 설계',
         roleBadge: '개발',
         cardTags: ['React Native', 'Spring Boot', 'Gemini API', 'OracleDB'],
-        allTags: ['React Native', 'Axios', 'Spring Boot', 'JPA', 'OracleDB', 'Gemini API', 'TTS', 'Docker'],
+        allTags: ['React Native', 'Axios', 'Spring Boot', 'JPA', 'OracleDB', 'Gemini API', 'Tesseract OCR', 'TTS', 'Docker'],
         contributions: [
           '카메라 → AI 분석 → DB 저장 → 통계 E2E 데이터 흐름 설계',
           'Axios 인터셉터 전역 로딩 관리 + 이미지 즉시 렌더링으로 체감 속도 개선',
           '비동기 작업 중 사용자 이탈 방지 UX 흐름 설계',
+        ],
+        troubleshooting: [
+          {
+            problem: '이미지만으로 칼로리를 정확히 계산하는 문제',
+            detail: 'AI 비전 모델 단독으로 음식 이미지를 분석할 경우 칼로리 추정 오차가 커서 신뢰할 수 있는 식단 기록이 어려웠습니다. 특히 포장 식품처럼 영양성분 표시가 있는 경우에도 이미지 인식에만 의존하면 오차가 발생했습니다.',
+            solution: 'Tesseract OCR로 식품 영양성분 표시를 텍스트로 추출하고, Gemini 비전 분석 결과와 한국식품진흥원 영양 API 데이터를 교차 비교하는 멀티소스 파이프라인을 구축해 칼로리 정확도를 높였습니다.',
+          },
         ],
         links: [
           { label: 'GitHub', url: 'https://github.com/GAMGO/jonullist' },
@@ -967,6 +1063,27 @@
         ? p.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener" class="detail-ext-link">${l.label} ↗</a>`).join('')
         : '';
 
+      const troubleshootingHtml = p.troubleshooting && p.troubleshooting.length
+        ? `<div class="detail-section">
+            <p class="detail-section-label">트러블슈팅</p>
+            <div class="ts-list">
+              ${p.troubleshooting.map(t => `
+                <div class="ts-item">
+                  <div class="ts-problem">
+                    <span class="ts-badge">문제</span>
+                    <span class="ts-problem-title">${t.problem}</span>
+                  </div>
+                  <p class="ts-detail">${t.detail}</p>
+                  <div class="ts-solution">
+                    <span class="ts-badge ts-badge-solution">해결</span>
+                    <span>${t.solution}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>`
+        : '';
+
       document.getElementById('detail-content').innerHTML = `
         <div class="detail-hero">
           <p class="detail-eyebrow">PROJECT</p>
@@ -979,6 +1096,10 @@
           </div>
         </div>
         <div class="detail-body">
+          <div class="detail-section">
+            <p class="detail-section-label">개요 · 목표</p>
+            <p class="detail-goal">${p.goal}</p>
+          </div>
           <div class="detail-section">
             <p class="detail-section-label">Tech Stack</p>
             <div class="tags">${tagsHtml(p.allTags, true)}</div>
@@ -997,6 +1118,7 @@
               }).join('')}
             </ul>
           </div>
+          ${troubleshootingHtml}
           ${p.arch ? `<div class="detail-section">
             <p class="detail-section-label">아키텍처</p>
             <img src="${p.arch}" alt="${p.name} 아키텍처" class="arch-img">
