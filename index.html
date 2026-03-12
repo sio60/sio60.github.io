@@ -461,55 +461,31 @@
     }
 
     /* ─── Troubleshooting ────────────────────────────────── */
-    .ts-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .ts-list { display: flex; flex-direction: column; gap: 0; }
     .ts-item {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.25rem 1.4rem;
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.5rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--border);
     }
-    .ts-problem {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
+    .ts-item:first-child { border-top: 1px solid var(--border); }
     .ts-problem-title { font-size: 0.9rem; font-weight: 600; color: var(--text); }
-    .ts-badge {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border-radius: 4px;
-      padding: 0.15rem 0.5rem;
-      flex-shrink: 0;
-      background: #fde8e8;
-      color: #a33;
-      border: 1px solid #f5c0c0;
-    }
-    .ts-badge-solution {
-      background: #e8f4e8;
-      color: #2a6b2a;
-      border-color: #b8ddb8;
-    }
     .ts-detail {
       font-size: 0.83rem;
-      color: var(--text2);
+      color: var(--text3);
       line-height: 1.7;
-      padding-left: 0.2rem;
     }
     .ts-solution {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
       font-size: 0.85rem;
-      color: var(--text);
-      font-weight: 500;
+      color: var(--text2);
       line-height: 1.6;
     }
-    .ts-solution .ts-badge { margin-top: 0.1rem; }
+    .ts-solution::before {
+      content: '→ ';
+      color: var(--navy);
+      font-weight: 600;
+    }
 
     /* ─── Detail Tags ────────────────────────────────────── */
     .detail-tag {
@@ -963,13 +939,7 @@
           'Python 백엔드 .exe 빌드 + Electron 통합 원클릭 실행 환경 구축',
           '앱 종료 시 Python 프로세스 강제 종료 생명주기 동기화 로직 구현',
         ],
-        troubleshooting: [
-          {
-            problem: 'Electron 내 화면 전환 시 캡처 대상 인식 불가',
-            detail: 'Electron 앱 내에서 다른 창으로 포커스가 이동하거나 화면이 전환될 때, 화면 캡처 모듈이 대상 창을 제대로 인식하지 못하거나 캡처 스트림이 끊기는 문제가 발생했습니다.',
-            solution: 'OBS(Open Broadcaster Software)를 활용해 화면 캡처 레이어를 별도로 분리하고, 창 전환과 무관하게 안정적으로 화면을 캡처할 수 있는 구조로 전환해 문제를 해결했습니다.',
-          },
-        ],
+        troubleshooting: [],
         links: [
           { label: 'GitHub', url: 'https://github.com/sio60/no-look' },
         ],
@@ -1065,19 +1035,13 @@
 
       const troubleshootingHtml = p.troubleshooting && p.troubleshooting.length
         ? `<div class="detail-section">
-            <p class="detail-section-label">트러블슈팅</p>
+            <p class="detail-section-label">Troubleshooting</p>
             <div class="ts-list">
               ${p.troubleshooting.map(t => `
                 <div class="ts-item">
-                  <div class="ts-problem">
-                    <span class="ts-badge">문제</span>
-                    <span class="ts-problem-title">${t.problem}</span>
-                  </div>
+                  <p class="ts-problem-title">${t.problem}</p>
                   <p class="ts-detail">${t.detail}</p>
-                  <div class="ts-solution">
-                    <span class="ts-badge ts-badge-solution">해결</span>
-                    <span>${t.solution}</span>
-                  </div>
+                  <p class="ts-solution">${t.solution}</p>
                 </div>
               `).join('')}
             </div>
@@ -1097,7 +1061,7 @@
         </div>
         <div class="detail-body">
           <div class="detail-section">
-            <p class="detail-section-label">개요 · 목표</p>
+            <p class="detail-section-label">Overview</p>
             <p class="detail-goal">${p.goal}</p>
           </div>
           <div class="detail-section">
@@ -1105,7 +1069,7 @@
             <div class="tags">${tagsHtml(p.allTags, true)}</div>
           </div>
           <div class="detail-section">
-            <p class="detail-section-label">기술적 기여</p>
+            <p class="detail-section-label">Contributions</p>
             <ul class="contribution-list">
               ${p.contributions.map(c => {
                 if (c.includes('→')) {
@@ -1120,7 +1084,7 @@
           </div>
           ${troubleshootingHtml}
           ${p.arch ? `<div class="detail-section">
-            <p class="detail-section-label">아키텍처</p>
+            <p class="detail-section-label">Architecture</p>
             <img src="${p.arch}" alt="${p.name} 아키텍처" class="arch-img">
           </div>` : ''}
           ${linksHtml ? `<div class="detail-section">
